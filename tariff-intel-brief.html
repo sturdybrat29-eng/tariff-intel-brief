@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Tariff Intel Brief — Weekly Intelligence for US Importers</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0B1F3A;
+    --blue: #1A4A8A;
+    --gold: #C8952A;
+    --gold-light: #F0C060;
+    --cream: #F7F3ED;
+    --cream-dark: #EDE8DF;
+    --white: #FFFFFF;
+    --text: #1A1A1A;
+    --muted: #5A6272;
+    --border: rgba(11,31,58,0.12);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* TOP BAR */
+  .topbar {
+    background: var(--navy);
+    color: var(--gold-light);
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    padding: 9px 1rem;
+    font-weight: 500;
+  }
+
+  /* NAV */
+  nav {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--navy);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+  .nav-logo span { color: var(--gold); }
+  .nav-badge {
+    font-size: 11px;
+    font-weight: 500;
+    background: #FFF3CD;
+    color: #7A5500;
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid #E8C84A;
+  }
+
+  /* HERO */
+  .hero {
+    background: var(--navy);
+    padding: 5rem 2rem 4rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 39px,
+      rgba(255,255,255,0.03) 39px,
+      rgba(255,255,255,0.03) 40px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 39px,
+      rgba(255,255,255,0.03) 39px,
+      rgba(255,255,255,0.03) 40px
+    );
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    border: 1px solid rgba(200,149,42,0.4);
+    padding: 5px 16px;
+    border-radius: 20px;
+    margin-bottom: 1.75rem;
+    position: relative;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 5vw, 52px);
+    color: var(--white);
+    line-height: 1.18;
+    font-weight: 700;
+    max-width: 700px;
+    margin: 0 auto 1.25rem;
+    position: relative;
+  }
+  .hero h1 em {
+    color: var(--gold-light);
+    font-style: italic;
+  }
+  .hero-sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.7);
+    max-width: 520px;
+    margin: 0 auto 2.5rem;
+    font-weight: 300;
+    position: relative;
+  }
+  .hero-cta {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--navy);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 15px 36px;
+    border-radius: 6px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    letter-spacing: 0.02em;
+  }
+  .btn-primary:hover { background: var(--gold-light); }
+  .btn-coming-soon {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 400;
+    padding: 13px 32px;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.25);
+    cursor: default;
+    letter-spacing: 0.02em;
+  }
+  .dot-pulse {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--gold-light);
+    animation: pulse 1.6s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.8); }
+  }
+  .hero-note {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 4px;
+  }
+
+  /* PROOF STRIP */
+  .proof {
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+  .proof-item {
+    padding: 1rem 2rem;
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-right: 1px solid var(--border);
+  }
+  .proof-item:last-child { border-right: none; }
+  .proof-dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
+
+  /* SECTIONS */
+  .section { padding: 4rem 2rem; max-width: 840px; margin: 0 auto; }
+  .section-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 0.6rem;
+  }
+  .section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3.5vw, 34px);
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.75rem;
+    line-height: 1.25;
+  }
+  .section-sub {
+    font-size: 16px;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+    max-width: 560px;
+  }
+
+  /* PAIN CARDS */
+  .pain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+  .pain-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+  }
+  .pain-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    background: #FEF0F0;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 12px;
+    font-size: 18px;
+  }
+  .pain-card strong { font-size: 14px; font-weight: 500; color: var(--navy); display: block; margin-bottom: 4px; }
+  .pain-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* WHAT YOU GET */
+  .what-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+  .what-card {
+    border-left: 3px solid var(--gold);
+    padding: 1.25rem 1.25rem 1.25rem 1.5rem;
+    background: var(--white);
+    border-radius: 0 10px 10px 0;
+  }
+  .what-num { font-size: 11px; font-weight: 500; color: var(--gold); letter-spacing: 0.08em; margin-bottom: 6px; }
+  .what-card strong { font-size: 14px; font-weight: 500; color: var(--navy); display: block; margin-bottom: 4px; }
+  .what-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* SAMPLE */
+  .sample-box {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .sample-header {
+    background: var(--navy);
+    padding: 0.75rem 1.25rem;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: var(--gold-light);
+    font-weight: 500;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .sample-header::before {
+    content: '';
+    width: 8px; height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+  }
+  .sample-body { padding: 1.5rem; }
+  .sample-body h3 { font-family: 'Playfair Display', serif; font-size: 18px; color: var(--navy); margin-bottom: 10px; line-height: 1.3; }
+  .sample-body p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+  .sample-insight {
+    margin-top: 1rem;
+    background: #F0F6FF;
+    border-left: 3px solid var(--blue);
+    padding: 12px 16px;
+    border-radius: 0 6px 6px 0;
+    font-size: 13px;
+    color: var(--blue);
+    line-height: 1.6;
+  }
+  .sample-insight strong { display: block; font-weight: 500; margin-bottom: 2px; color: #0B2E6E; }
+
+  /* DIVIDER */
+  .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+  /* PRICE */
+  .price-wrap { display: flex; justify-content: center; }
+  .price-box {
+    width: 100%;
+    max-width: 420px;
+    border: 2px solid var(--navy);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .price-top {
+    background: var(--navy);
+    padding: 1.5rem;
+    text-align: center;
+    color: var(--white);
+  }
+  .price-top .amount { font-family: 'Playfair Display', serif; font-size: 48px; color: var(--gold-light); font-weight: 700; line-height: 1; }
+  .price-top .per { font-size: 14px; color: rgba(255,255,255,0.55); margin-top: 4px; }
+  .price-body { padding: 1.5rem; background: var(--white); }
+  .price-list { list-style: none; margin-bottom: 1.5rem; }
+  .price-list li {
+    font-size: 14px; color: var(--muted);
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: flex-start; gap: 10px;
+  }
+  .price-list li:last-child { border-bottom: none; }
+  .check { color: var(--gold); font-size: 16px; margin-top: 1px; flex-shrink: 0; }
+  .price-cta { text-align: center; }
+  .price-note { font-size: 12px; color: var(--muted); margin-top: 8px; }
+
+  /* FAQ */
+  .faq-list { display: grid; gap: 0; }
+  .faq-item { padding: 1.25rem 0; border-bottom: 1px solid var(--border); }
+  .faq-item:first-child { border-top: 1px solid var(--border); }
+  .faq-item strong { font-size: 15px; font-weight: 500; color: var(--navy); display: block; margin-bottom: 4px; }
+  .faq-item p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+  /* FOOTER CTA */
+  .footer-cta {
+    background: var(--navy);
+    padding: 4rem 2rem;
+    text-align: center;
+  }
+  .footer-cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(22px, 3vw, 34px);
+    color: var(--white);
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+  }
+  .footer-cta p { font-size: 15px; color: rgba(255,255,255,0.6); margin-bottom: 2rem; }
+  .footer-note { font-size: 12px; color: rgba(255,255,255,0.3); margin-top: 1rem; }
+
+  /* FOOTER */
+  footer {
+    background: #06121F;
+    padding: 1.5rem 2rem;
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  @media (max-width: 600px) {
+    .proof { flex-direction: column; }
+    .proof-item { border-right: none; border-bottom: 1px solid var(--border); }
+    nav { padding: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">WEEKLY INTELLIGENCE FOR US IMPORTERS &nbsp;·&nbsp; EVERY MONDAY 7AM ET</div>
+
+<nav>
+  <div class="nav-logo">Tariff Intel <span>Brief</span></div>
+  <div class="nav-badge">⏳ Coming Soon</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Tariff Intelligence · Est. 2025</div>
+  <h1>Stop Losing Money on Tariffs <em>You Didn't See Coming</em></h1>
+  <p class="hero-sub">Every week, get the exact tariff changes, cost impacts, and legal workarounds your procurement team needs — before your competitors find out.</p>
+  <div class="hero-cta">
+    <a href="https://tariff-intel-brief.beehiiv.com/subscribe" class="btn-primary">Join the Waitlist — Free</a>
+    <div class="btn-coming-soon">
+      <div class="dot-pulse"></div>
+      Paid subscriptions opening soon — $500/month
+    </div>
+    <p class="hero-note">No spam. Unsubscribe anytime. Your spot is free to reserve.</p>
+  </div>
+</section>
+
+<!-- PROOF STRIP -->
+<div class="proof">
+  <div class="proof-item"><div class="proof-dot"></div> Published every Monday 7am ET</div>
+  <div class="proof-item"><div class="proof-dot"></div> Plain English — no legal jargon</div>
+  <div class="proof-item"><div class="proof-dot"></div> 100% focused on US import tariffs</div>
+  <div class="proof-item"><div class="proof-dot"></div> Cancel anytime</div>
+</div>
+
+<!-- PROBLEM -->
+<div style="background: var(--cream);">
+<div class="section">
+  <p class="section-label">The problem</p>
+  <h2>Tariff changes are costing you more than you think</h2>
+  <p class="section-sub">Most procurement teams find out about tariff changes after the damage is done — an unexpected invoice, a margin hit, a scramble to find new suppliers.</p>
+  <div class="pain-grid">
+    <div class="pain-card">
+      <div class="pain-icon">⚡</div>
+      <strong>Surprise duties</strong>
+      <p>A new executive order raises tariffs 25% overnight. Your landed cost explodes with no warning.</p>
+    </div>
+    <div class="pain-card">
+      <div class="pain-icon">⏰</div>
+      <strong>Too slow to react</strong>
+      <p>By the time your customs broker calls, your competitors already re-routed their supply chain.</p>
+    </div>
+    <div class="pain-card">
+      <div class="pain-icon">📄</div>
+      <strong>Confusing legal language</strong>
+      <p>Federal Register notices are written for lawyers. Not for the VP of Procurement.</p>
+    </div>
+    <div class="pain-card">
+      <div class="pain-icon">💸</div>
+      <strong>Missed savings</strong>
+      <p>Legal workarounds exist — FTZs, duty drawback, bonded warehouses — but nobody tells you.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<hr class="divider"/>
+
+<!-- WHAT YOU GET -->
+<div style="background: var(--white);">
+<div class="section">
+  <p class="section-label">What you get</p>
+  <h2>Your weekly briefing — in 10 minutes or less</h2>
+  <p class="section-sub">Every Monday morning, a clear, actionable briefing lands in your inbox. No fluff. No filler.</p>
+  <div class="what-grid">
+    <div class="what-card">
+      <div class="what-num">01</div>
+      <strong>This week's tariff changes</strong>
+      <p>Every new ruling, rate change, and executive order — translated into plain English.</p>
+    </div>
+    <div class="what-card">
+      <div class="what-num">02</div>
+      <strong>Cost impact analysis</strong>
+      <p>What it means for your landed costs, margins, and supplier contracts — in real numbers.</p>
+    </div>
+    <div class="what-card">
+      <div class="what-num">03</div>
+      <strong>Legal workarounds</strong>
+      <p>Duty drawback, FTZ strategies, tariff classification reviews — real options to act on this week.</p>
+    </div>
+    <div class="what-card">
+      <div class="what-num">04</div>
+      <strong>What to watch next</strong>
+      <p>Upcoming decisions and hearings on your radar — so you're never caught off guard again.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<hr class="divider"/>
+
+<!-- SAMPLE -->
+<div style="background: var(--cream);">
+<div class="section">
+  <p class="section-label">Sample insight</p>
+  <h2>This is what a typical briefing looks like</h2>
+  <p class="section-sub">Real analysis. Real numbers. Real action steps. Every single week.</p>
+  <div class="sample-box">
+    <div class="sample-header">Sample — Week of May 12, 2025</div>
+    <div class="sample-body">
+      <h3>Section 301 China tariffs extended on 382 HTS codes — here's what's on the list</h3>
+      <p>The USTR confirmed this week that tariff rates on electronics components, industrial fasteners, and select plastics remain at 25%. No phase-out scheduled. If you're sourcing from Tier 2 suppliers in Guangdong, your classification may need a second look.</p>
+      <div class="sample-insight">
+        <strong>Action this week:</strong>
+        Request a tariff classification review from your broker for HTS codes 8536.XX and 3926.XX. First sale valuation may reduce your dutiable value by 8–15% on these categories — that's real money back in your margin.
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<hr class="divider"/>
+
+<!-- PRICING -->
+<div style="background: var(--white);">
+<div class="section">
+  <p class="section-label">Pricing</p>
+  <h2>One subscription. Your whole team.</h2>
+  <p class="section-sub">Forward it to your entire procurement team. If one workaround saves you $10,000, the newsletter pays for itself 20x over.</p>
+  <div class="price-wrap">
+    <div class="price-box">
+      <div class="price-top">
+        <div class="amount">$500</div>
+        <div class="per">per month · cancel anytime</div>
+      </div>
+      <div class="price-body">
+        <ul class="price-list">
+          <li><span class="check">✓</span> Weekly Monday briefing, every single week</li>
+          <li><span class="check">✓</span> Full archive access from day one</li>
+          <li><span class="check">✓</span> Covers all major import categories</li>
+          <li><span class="check">✓</span> Written for procurement — not lawyers</li>
+          <li><span class="check">✓</span> Share with your whole team, one price</li>
+          <li><span class="check">✓</span> Cancel anytime, no questions asked</li>
+        </ul>
+        <div class="price-cta">
+          <a href="https://tariff-intel-brief.beehiiv.com/subscribe" class="btn-primary" style="display:block; text-align:center;">Reserve My Spot on the Waitlist</a>
+          <p class="price-note">Payment link opening soon. Join the waitlist to be first.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<hr class="divider"/>
+
+<!-- FAQ -->
+<div style="background: var(--cream);">
+<div class="section">
+  <p class="section-label">Common questions</p>
+  <h2>FAQs</h2>
+  <div class="faq-list">
+    <div class="faq-item">
+      <strong>Who is this newsletter for?</strong>
+      <p>US importers, procurement managers, supply chain directors, and operations leaders directly affected by tariff changes. If tariffs affect your cost of goods, this is for you.</p>
+    </div>
+    <div class="faq-item">
+      <strong>Is this legal advice?</strong>
+      <p>No. This is intelligence and analysis to help you ask better questions and make faster decisions. For specific legal advice, consult your trade attorney — but come to that meeting fully informed.</p>
+    </div>
+    <div class="faq-item">
+      <strong>How often is it published?</strong>
+      <p>Every Monday morning at 7am Eastern Time, so you and your team start the week with full visibility.</p>
+    </div>
+    <div class="faq-item">
+      <strong>Can I cancel anytime?</strong>
+      <p>Yes. No contracts, no lock-ins. Cancel before your next billing date and you won't be charged again. Simple as that.</p>
+    </div>
+    <div class="faq-item">
+      <strong>Why $500/month?</strong>
+      <p>Because one tariff workaround — a reclassification, an FTZ strategy, a duty drawback claim — can save your business $10,000 to $100,000. The newsletter pays for itself many times over.</p>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- FOOTER CTA -->
+<div class="footer-cta">
+  <h2>Your competitors are already adapting.<br>Are you?</h2>
+  <p>Join the waitlist. Be first in line when subscriptions open.</p>
+  <a href="https://tariff-intel-brief.beehiiv.com/subscribe" class="btn-primary">Join the Waitlist — It's Free</a>
+  <p class="footer-note">tariffintelbriefhq@gmail.com · tariff-intel-brief.beehiiv.com</p>
+</div>
+
+<footer>
+  © 2025 Tariff Intel Brief · All rights reserved · Mumbai, India
+</footer>
+
+</body>
+</html>
